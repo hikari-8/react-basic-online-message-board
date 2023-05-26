@@ -1,13 +1,16 @@
 import React from 'react';
 import { AllBoard } from './components/pages/allBoard';
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        あああ
+        掲示板
       </header>
-      <AllBoard />
+      <Routes> {/*Routesで囲む*/}
+        <Route path="/" element={ <AllBoard /> } />
+      </Routes>
     </div>
   );
 }

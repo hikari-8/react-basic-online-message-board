@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { ThreadListCard } from "../model/thread/threadList";
+import { ThreadList } from "../model/thread/threadList";
 
 export const AllBoard:React.FC =()=> {
   const [allBoardData, setAllBoardData] =useState([])
@@ -24,13 +24,7 @@ export const AllBoard:React.FC =()=> {
   return (
     <>
       <div>全てのスレ掲示板です</div>
-
-          {
-            allBoardData.map((thread) => {
-              return <ThreadListCard thread={thread} />
-            }
-            )
-          }
+      <ThreadList threads={allBoardData} />
     </>
   )
 }
