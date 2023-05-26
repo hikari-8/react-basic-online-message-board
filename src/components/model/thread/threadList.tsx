@@ -8,7 +8,7 @@ type ThreadListProps = {
 
 export const ThreadList:React.FC<ThreadListProps> =({threads})=> {
   return (
-    <ul className="flex flex-col justify-center w-full">
+      <ul className="flex flex-col justify-center w-full">
           {
             threads.map((thread) => {
               return (

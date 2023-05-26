@@ -6,13 +6,13 @@ import { CreateThreadButton } from "../ui/button/createThreadButton";
 
 export const AllBoard:React.FC =()=> {
   const [allBoardData, setAllBoardData] =useState([])
+  const [queryNum, setQueryNum] =useState<number>(0)
   useEffect(()=>{
     queryAllBoardData()
-  },[])
-  
+  },[queryNum])
 
   const queryAllBoardData =()=>{
-    const url = "https://2y6i6tqn41.execute-api.ap-northeast-1.amazonaws.com/threads"
+    const url = `https://2y6i6tqn41.execute-api.ap-northeast-1.amazonaws.com/threads?offset=${queryNum}`
     axios.get(url)
     .then((res)=> {
       console.log("res.data", res.data)
@@ -22,14 +22,23 @@ export const AllBoard:React.FC =()=> {
       console.error("Error fetching data:", error)
     })
   }
+  const nextData =()=> {
+    setQueryNum(queryNum + 10)
+  }
+  const previousData =()=> {
+    setQueryNum(queryNum - 10)
+  }
 
   return (
     <>
-      <div>全てのスレ掲示板です</div>
       <Link to="/thread/new">
         <CreateThreadButton />
       </Link>
       <ThreadList threads={allBoardData} />
+      <div className="w-1/4 text-center my-7 flex mx-auto">
+        <div onClick={nextData} className="hover:underline cursor-pointer mr-10">👈 前の10件</div>
+        <div onClick={previousData} className="hover:underline cursor-pointer">次の10件 👉</div>
+      </div>
     </>
   )
 }
