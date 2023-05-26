@@ -1,3 +1,11 @@
+### ログメモ
+2023/05/26
+- Node.js version管理
+
+### 疑問メモ
+- 個々人の環境を汚さずにnodeのversion管理をするためには、Dockerを導入すべきかどうか
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
