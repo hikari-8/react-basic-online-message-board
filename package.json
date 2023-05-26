@@ -2,7 +2,7 @@
   "name": "react-station-basic1",
   "version": "0.1.0",
   "engines": {
-    "node": ">=8.10"
+    "node": "18.9.1"
   },
   "private": true,
   "dependencies": {
