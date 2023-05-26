@@ -6,7 +6,6 @@ type ThreadListCardProps = {
 }
 
 export const ThreadListCard:React.FC<ThreadListCardProps> =({thread})=> {
-  console.log([thread])
   return (
     <>
       {
