@@ -1,0 +1,36 @@
+{
+  "overrides": [{
+          "files": "client/**/*.vue",
+          "options": {
+              "printWidth": 300,
+              "singleQuote": false,
+              "tabWidth": 4,
+              "semi": true,
+              "trailingComma": "es5",
+              "bracketSpacing": true
+          }
+      },
+      {
+          "files": "client/**/*.ts",
+          "options": {
+              "printWidth": 300,
+              "singleQuote": false,
+              "tabWidth": 4,
+              "semi": true,
+              "trailingComma": "es5",
+              "bracketSpacing": true
+          }
+      },
+      {
+          "files": "**/*.js",
+          "options": {
+              "printWidth": 300,
+              "singleQuote": false,
+              "tabWidth": 4,
+              "semi": true,
+              "trailingComma": "es5",
+              "bracketSpacing": true
+          }
+      }
+  ]
+}
