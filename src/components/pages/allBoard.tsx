@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { ThreadList } from "../model/thread/threadList";
+import { Link } from "react-router-dom";
+import { CreateThreadButton } from "../ui/button/createThreadButton";
 
 export const AllBoard:React.FC =()=> {
   const [allBoardData, setAllBoardData] =useState([])
@@ -24,6 +26,9 @@ export const AllBoard:React.FC =()=> {
   return (
     <>
       <div>全てのスレ掲示板です</div>
+      <Link to="/thread/new">
+        <CreateThreadButton />
+      </Link>
       <ThreadList threads={allBoardData} />
     </>
   )
