@@ -1,4 +1,5 @@
 import React from 'react';
+import { AllBoard } from './components/pages/allBoard';
 
 function App() {
   return (
@@ -6,6 +7,7 @@ function App() {
       <header className="App-header">
         あああ
       </header>
+      <AllBoard />
     </div>
   );
 }
