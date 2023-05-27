@@ -8,10 +8,11 @@ export const AllBoard:React.FC =()=> {
   const [allBoardData, setAllBoardData] =useState([])
   const [queryNum, setQueryNum] =useState<number>(0)
   useEffect(()=>{
-    queryAllBoardData()
-  },[queryNum])
+    queryAllBoardData(queryNum)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
 
-  const queryAllBoardData =()=>{
+  const queryAllBoardData =(queryNum: number)=>{
     const url = `https://2y6i6tqn41.execute-api.ap-northeast-1.amazonaws.com/threads?offset=${queryNum}`
     axios.get(url)
     .then((res)=> {
@@ -23,10 +24,14 @@ export const AllBoard:React.FC =()=> {
     })
   }
   const nextData =()=> {
-    setQueryNum(queryNum + 10)
+    const newQueryNum = queryNum + 10
+    setQueryNum(newQueryNum)
+    queryAllBoardData(newQueryNum)
   }
   const previousData =()=> {
-    setQueryNum(queryNum - 10)
+    const newQueryNum = queryNum - 10
+    setQueryNum(newQueryNum)
+    queryAllBoardData(newQueryNum)
   }
 
   return (
