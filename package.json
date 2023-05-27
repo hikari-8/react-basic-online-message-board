@@ -26,10 +26,10 @@
   },
   "scripts": {
     "switch_node_version": "./switch_node_version.sh",
-    "start": "yarn switch_node_version && react-scripts start",
-    "build": "yarn switch_node_version && react-scripts build",
-    "test": "yarn switch_node_version && react-scripts test",
-    "eject": "yarn switch_node_version && react-scripts eject"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
