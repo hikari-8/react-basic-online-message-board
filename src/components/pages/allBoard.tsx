@@ -36,14 +36,20 @@ export const AllBoard:React.FC =()=> {
 
   return (
     <>
-      <Link to="/thread/new">
-        <CreateThreadButton />
-      </Link>
-      <ThreadList threads={allBoardData} />
-      <div className="w-1/4 text-center my-7 flex mx-auto">
-        <div onClick={nextData} className="hover:underline cursor-pointer mr-10">👈 前の10件</div>
-        <div onClick={previousData} className="hover:underline cursor-pointer">次の10件 👉</div>
-      </div>
+      {
+        allBoardData &&
+        <>
+          <Link to="/thread/new">
+            <CreateThreadButton />
+          </Link>
+          <ThreadList threads={allBoardData} />
+          <div className="w-1/4 text-center my-7 flex mx-auto">
+            <div onClick={nextData} className="hover:underline cursor-pointer mr-10">👈 前の10件</div>
+            <div onClick={previousData} className="hover:underline cursor-pointer">次の10件 👉</div>
+          </div>
+        </>
+        
+      }
     </>
   )
 }
