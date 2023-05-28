@@ -30,8 +30,12 @@ export const AllBoard:React.FC =()=> {
   }
   const previousData =()=> {
     const newQueryNum = queryNum - 10
-    setQueryNum(newQueryNum)
-    queryAllBoardData(newQueryNum)
+    if(newQueryNum >=10) {
+      setQueryNum(newQueryNum)
+      queryAllBoardData(newQueryNum)
+    } else {
+      window.alert("これより前のデータはありません")
+    }
   }
 
   return (
@@ -44,11 +48,10 @@ export const AllBoard:React.FC =()=> {
           </Link>
           <ThreadList threads={allBoardData} />
           <div className="w-1/4 text-center my-7 flex mx-auto">
-            <div onClick={nextData} className="hover:underline cursor-pointer mr-10">👈 前の10件</div>
-            <div onClick={previousData} className="hover:underline cursor-pointer">次の10件 👉</div>
+            <div onClick={previousData} className="hover:underline cursor-pointer mr-10">👈 前の10件</div>
+            <div onClick={nextData} className="hover:underline cursor-pointer">次の10件 👉</div>
           </div>
         </>
-        
       }
     </>
   )
