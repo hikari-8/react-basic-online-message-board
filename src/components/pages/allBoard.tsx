@@ -16,7 +16,6 @@ export const AllBoard:React.FC =()=> {
     const url = `https://2y6i6tqn41.execute-api.ap-northeast-1.amazonaws.com/threads?offset=${queryNum}`
     axios.get(url)
     .then((res)=> {
-      console.log("res.data", res.data)
       setAllBoardData(res.data);
     })
     .catch((error) => {

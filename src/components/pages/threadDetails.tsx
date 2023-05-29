@@ -5,22 +5,27 @@ import { useLocation, useParams } from "react-router-dom";
 import { PostList } from "../model/post/postList";
 import { Post } from "../../type/model";
 
+interface State {
+  threadTitle: string;
+}
+
 export const ThreadDetails:React.FC =()=> {
   const [allBoardData, setAllBoardData] =useState<Post[] | null>([])
   const [queryNum, setQueryNum] =useState<number>(0)
   const [postSentence, setPostSentence] =useState<string>("")
-  const [threadTitle, setThreadTitle] = useState<string> ("")
+  // const [threadTitle, setThreadTitle] = useState<string> ("")
   const threadId = useParams().thread_id
   const location = useLocation();
+  const { threadTitle } = location.state as State;
 
   useEffect(()=>{
     if(threadId) {
       queryThreadData(threadId, queryNum)
-      const searchParams = new URLSearchParams(location.search);
-      const title= searchParams.get('title');
-      if(title) {
-      setThreadTitle(title)
-      }
+      // const searchParams = new URLSearchParams(location.search);
+      // const title= searchParams.get('title');
+      // if(title) {
+      // setThreadTitle(title)
+      // }
     } else {
       console.error("No params thread_id")
     }
@@ -31,7 +36,6 @@ export const ThreadDetails:React.FC =()=> {
     const url = `https://2y6i6tqn41.execute-api.ap-northeast-1.amazonaws.com/threads/${threadId}/posts?offset=${queryNum}`
     axios.get(url)
     .then((res)=> {
-      console.log("res.data", res.data.posts)
       setAllBoardData(res.data.posts);
     })
     .catch((error) => {
@@ -40,10 +44,11 @@ export const ThreadDetails:React.FC =()=> {
   }
 
   const postData =(e: any)=>{
+    e.preventDefault();
     const url = `https://2y6i6tqn41.execute-api.ap-northeast-1.amazonaws.com/threads/${threadId}/posts`
     axios.post(url, { post: postSentence })
     .then((res)=> {
-      console.log("res.data", res.data)
+      queryThreadData(threadId!, queryNum)
       setAllBoardData(res.data.posts);
     })
     .catch((error) => {

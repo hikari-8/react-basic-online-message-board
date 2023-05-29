@@ -6,14 +6,12 @@ import { ThreadForm } from "../ui/input/threadForm";
 export const CreateThread:React.FC =()=> {
   const [threadTitle, setThreadTitle] =useState<string>("")
   const navigate = useNavigate();
-  console.log({navigate})
 
   const createNewThread =(e: any)=>{
     e.preventDefault();
     const url = "https://2y6i6tqn41.execute-api.ap-northeast-1.amazonaws.com/threads"
     axios.post(url, {title: `${threadTitle}`})
     .then((res)=> {
-      console.log("res.data", res.data)
       navigate("/")
     })
     .catch((error) => {
