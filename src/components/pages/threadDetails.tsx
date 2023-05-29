@@ -13,7 +13,6 @@ export const ThreadDetails:React.FC =()=> {
   const [allBoardData, setAllBoardData] =useState<Post[] | null>([])
   const [queryNum, setQueryNum] =useState<number>(0)
   const [postSentence, setPostSentence] =useState<string>("")
-  // const [threadTitle, setThreadTitle] = useState<string> ("")
   const threadId = useParams().thread_id
   const location = useLocation();
   const { threadTitle } = location.state as State;
@@ -21,11 +20,6 @@ export const ThreadDetails:React.FC =()=> {
   useEffect(()=>{
     if(threadId) {
       queryThreadData(threadId, queryNum)
-      // const searchParams = new URLSearchParams(location.search);
-      // const title= searchParams.get('title');
-      // if(title) {
-      // setThreadTitle(title)
-      // }
     } else {
       console.error("No params thread_id")
     }
