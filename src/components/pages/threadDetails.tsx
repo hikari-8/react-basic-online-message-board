@@ -63,16 +63,18 @@ export const ThreadDetails:React.FC =()=> {
     <>
       {
         allBoardData &&
-        <div className="relative">
+        <div className="">
           <PostList posts={allBoardData} />
-          <ThreadForm 
-            buttonName="投稿する" 
-            placeholderText="Input text for post"
-            onSubmitFunc={postData} 
-            onChangeFunc={(e)=> {setPostSentence(e.target.value)}} />
-            <div className="w-1/4 text-center my-7 flex mx-auto">
-              <div onClick={previousData} className="hover:underline cursor-pointer mr-10">👈 前の10件</div>
-              <div onClick={nextData} className="hover:underline cursor-pointer">次の10件 👉</div>
+          <div className="fixed bottom-10 w-full">
+            <ThreadForm 
+              buttonName="投稿する" 
+              placeholderText="Input text for post"
+              onSubmitFunc={postData} 
+              onChangeFunc={(e)=> {setPostSentence(e.target.value)}} />
+              <div className="w-1/4 text-center my-7 flex mx-auto">
+                <div onClick={previousData} className="hover:underline cursor-pointer mr-10">👈 前の10件</div>
+                <div onClick={nextData} className="hover:underline cursor-pointer">次の10件 👉</div>
+              </div>
             </div>
         </div>
       }
