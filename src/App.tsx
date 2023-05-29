@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 function App() {
   return (
     <div className="App">
-      <header className="py-4 bg-slate-50 shadow-sm text-lg font-bold ml-10">
+      <header className="py-4 bg-slate-50 shadow-sm text-lg font-bold pl-10">
         <Link to="/">
         掲示板
         </Link>
