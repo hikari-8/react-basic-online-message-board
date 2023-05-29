@@ -70,7 +70,7 @@ export const ThreadDetails:React.FC =()=> {
       {
         allBoardData &&
         <div className="">
-          <div className="text-lg font-bold text-center">{threadTitle}</div>
+          <div className="text-lg font-bold text-center mt-5">{threadTitle}</div>
           <PostList posts={allBoardData} />
           <div className="fixed bottom-10 w-full">
             <ThreadForm 
