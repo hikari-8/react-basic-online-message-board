@@ -7,7 +7,7 @@ import { ThreadDetails } from './components/pages/threadDetails';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="App-header py-4">
         掲示板
       </header>
       <Routes> {/*Routesで囲む*/}

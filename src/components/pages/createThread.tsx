@@ -22,7 +22,11 @@ export const CreateThread:React.FC =()=> {
   }
   return (
     <>
-      <ThreadForm buttonName="Add Thread" onSubmitFunc={createNewThread} onChangeFunc={(e)=> setThreadTitle(e.target.value)}  />
+      <ThreadForm 
+        buttonName="Add Thread" 
+        placeholderText="Input title for new thread"
+        onSubmitFunc={createNewThread} 
+        onChangeFunc={(e)=> setThreadTitle(e.target.value)}  />
     </>
   )
 }

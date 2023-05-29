@@ -1,11 +1,17 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { CreateThreadButton } from "../ui/button/createThreadButton";
+import { ThreadForm } from "../ui/button/input/threadForm";
+import { useParams } from "react-router-dom";
+
+type QueriedPosts = {
+  postId: string
+  post: string
+}
 
 export const ThreadDetails:React.FC =()=> {
-  const [allBoardData, setAllBoardData] =useState([])
+  const [allBoardData, setAllBoardData] =useState<QueriedPosts[] | null>([])
   const [queryNum, setQueryNum] =useState<number>(0)
+  const [postSentence, setPostSentence] =useState<string>("")
   const threadId = useParams().thread_id
 
   useEffect(()=>{
@@ -21,8 +27,20 @@ export const ThreadDetails:React.FC =()=> {
     const url = `https://2y6i6tqn41.execute-api.ap-northeast-1.amazonaws.com/threads/${threadId}/posts?offset=${queryNum}`
     axios.get(url)
     .then((res)=> {
+      console.log("res.data", res.data.posts)
+      setAllBoardData(res.data.posts);
+    })
+    .catch((error) => {
+      console.error("Error fetching data:", error)
+    })
+  }
+
+  const postData =(e: any)=>{
+    const url = `https://2y6i6tqn41.execute-api.ap-northeast-1.amazonaws.com/threads/${threadId}/posts`
+    axios.post(url, { post: postSentence })
+    .then((res)=> {
       console.log("res.data", res.data)
-      setAllBoardData(res.data);
+      setAllBoardData(res.data.posts);
     })
     .catch((error) => {
       console.error("Error fetching data:", error)
@@ -43,13 +61,19 @@ export const ThreadDetails:React.FC =()=> {
     <>
       {
         allBoardData &&
-        <>
-          <Link to="/thread/new">
-            <CreateThreadButton />
-          </Link>
-          <div>マジどうでもいいよね、自分が楽しく昨日の自分より成長すれば良くね？</div>
-        </>
-        
+        <div className="relative">
+          {allBoardData.map((post)=> {
+            console.log("post", post)
+            return (
+                <div key={post.postId}>{post.post}</div>
+            )} 
+            )}
+          <ThreadForm 
+            buttonName="投稿する" 
+            placeholderText="Input text for post"
+            onSubmitFunc={postData} 
+            onChangeFunc={(e)=> {setPostSentence(e.target.value)}} />
+        </div>
       }
     </>
   )
