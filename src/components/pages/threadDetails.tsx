@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { ThreadForm } from "../ui/button/input/threadForm";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { PostList } from "../model/post/postList";
 import { Post } from "../../type/model";
 
@@ -9,11 +9,18 @@ export const ThreadDetails:React.FC =()=> {
   const [allBoardData, setAllBoardData] =useState<Post[] | null>([])
   const [queryNum, setQueryNum] =useState<number>(0)
   const [postSentence, setPostSentence] =useState<string>("")
+  const [threadTitle, setThreadTitle] = useState<string> ("")
   const threadId = useParams().thread_id
+  const location = useLocation();
 
   useEffect(()=>{
     if(threadId) {
       queryThreadData(threadId, queryNum)
+      const searchParams = new URLSearchParams(location.search);
+      const title= searchParams.get('title');
+      if(title) {
+      setThreadTitle(title)
+      }
     } else {
       console.error("No params thread_id")
     }
@@ -63,6 +70,7 @@ export const ThreadDetails:React.FC =()=> {
       {
         allBoardData &&
         <div className="">
+          <div className="text-lg font-bold text-center">{threadTitle}</div>
           <PostList posts={allBoardData} />
           <div className="fixed bottom-10 w-full">
             <ThreadForm 
