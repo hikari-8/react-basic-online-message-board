@@ -2,14 +2,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { ThreadForm } from "../ui/button/input/threadForm";
 import { useParams } from "react-router-dom";
-
-type QueriedPosts = {
-  postId: string
-  post: string
-}
+import { PostList } from "../model/post/postList";
+import { Post } from "../../type/model";
 
 export const ThreadDetails:React.FC =()=> {
-  const [allBoardData, setAllBoardData] =useState<QueriedPosts[] | null>([])
+  const [allBoardData, setAllBoardData] =useState<Post[] | null>([])
   const [queryNum, setQueryNum] =useState<number>(0)
   const [postSentence, setPostSentence] =useState<string>("")
   const threadId = useParams().thread_id
@@ -62,12 +59,7 @@ export const ThreadDetails:React.FC =()=> {
       {
         allBoardData &&
         <div className="relative">
-          {allBoardData.map((post)=> {
-            console.log("post", post)
-            return (
-                <div key={post.postId}>{post.post}</div>
-            )} 
-            )}
+          <PostList posts={allBoardData} />
           <ThreadForm 
             buttonName="投稿する" 
             placeholderText="Input text for post"
