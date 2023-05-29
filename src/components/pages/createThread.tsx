@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ThreadForm } from "../ui/button/input/threadForm";
 
 export const CreateThread:React.FC =()=> {
@@ -22,6 +22,7 @@ export const CreateThread:React.FC =()=> {
   }
   return (
     <>
+      <Link to="/" className="underline ml-10">Return to Home</Link>
       <ThreadForm 
         buttonName="Add Thread" 
         placeholderText="Input title for new thread"

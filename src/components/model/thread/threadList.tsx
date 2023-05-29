@@ -15,7 +15,6 @@ export const ThreadList:React.FC<ThreadListProps> =({threads})=> {
               <li key={thread.id}>
                 <ThreadListCard thread={thread} />
               </li>
-
               )
               })
           }
