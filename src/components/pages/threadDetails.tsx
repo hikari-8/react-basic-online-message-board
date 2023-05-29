@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { ThreadForm } from "../ui/button/input/threadForm";
+import { ThreadForm } from "../ui/input/threadForm";
 import { useLocation, useParams } from "react-router-dom";
 import { PostList } from "../model/post/postList";
 import { Post } from "../../type/model";
