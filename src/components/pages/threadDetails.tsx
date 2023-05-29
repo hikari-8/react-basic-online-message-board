@@ -56,7 +56,6 @@ export const ThreadDetails:React.FC =()=> {
     } else {
       window.alert("これより前のデータはありません")
     }
-
   }
 
   return (
